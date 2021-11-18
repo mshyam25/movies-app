@@ -1,23 +1,58 @@
-import logo from './logo.svg';
+import { InitialMovieList } from './Components/Initial-data/initial-data';
+import { MovieList } from './Components/movie-list/movie-list';
+import { AddColor } from './Components/add-color/add-color';
 import './App.css';
 
+import {useState} from 'react'
+
+import {Switch,Route} from 'react-router-dom'
+import { RouterLinks } from './Components/router-links/router-links';
+import { MovieInfo } from './Components/movie-info/movie-info';
+
+
 function App() {
+
+  const [movies,setMovies]=useState(InitialMovieList)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+   
+<Switch>
+
+
+<Route path='/home'>
+<h1>Welcome to the App!!!!!!!!!!</h1>
+</Route>
+
+<Route path='/colors'>
+<AddColor/>
+</Route>
+
+
+
+<Route path='/movies'>
+<MovieList moviesList={movies} setMoviesList={setMovies}/>
+</Route>
+
+<Route path='/movie-info/:movieid'>
+<MovieInfo moviesList={movies} />
+</Route>
+
+
+
+<Route path='/'>
+<RouterLinks/>
+
+<MovieList moviesList={movies}/>
+</Route>
+
+</Switch>
+
+
+
+  
+
+     
     </div>
   );
 }
