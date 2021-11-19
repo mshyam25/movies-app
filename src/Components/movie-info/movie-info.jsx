@@ -2,23 +2,23 @@ import React from 'react'
 import { useParams } from 'react-router'
 
 
-export const MovieInfo=({moviesList})=>
+export const MovieInfo=({movies})=>
 {
 
     const {movieid}=useParams()
 
-    const movie=moviesList[movieid]
+    const movie=movies[movieid]
 
     return(
 
-        
+  
         <div className='movie-container'>
-        <img src={movie.poster} alt={movie.moviename} />
         <h3>{movie.moviename} </h3>
-          <h5>{movie.rating}</h5>
+          <h5> 🌟{movie.rating}</h5>
           <p>{movie.summary}</p>
+
         </div>
-       
+        
         
     )
 }

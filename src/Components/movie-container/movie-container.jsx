@@ -4,30 +4,68 @@ import './movie-container.css'
 import { LikeDislike } from '../like-dislike/like-dislike'
 import { useHistory } from 'react-router'
 
-export const MovieContainer=({index,movie,deleteButton})=>{
+import InfoIcon from '@mui/icons-material/Info'
+import IconButton from '@mui/material/IconButton'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 
-    const [show,setShow]=useState(true)
+import Card from '@mui/material/Card'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
 
-    const toggle=()=>
-    {
-        setShow(!show)
-    }
+export const MovieContainer = ({ index, movie, deleteButton, editButton }) => {
+  const [show, setShow] = useState(true)
 
-    const history=useHistory();
-    return(
+  const toggle = () => {
+    setShow(!show)
+  }
 
-        <div className='movie-container'>
-        <img src={movie.poster} alt={movie.moviename} />
-        <h3>{movie.moviename}
-        <button onClick={toggle}>{show ? 'Hide' : 'Display'}</button>
-        {movie.rating}
-        </h3>
-        <button onClick={()=>history.push(`/movie-info/${index}`)}>Movie Info</button>
-
-        {show? <p>{movie.summary}</p> : ''}
-       
-        <LikeDislike/>
-      
-        </div>
-    )
+  const history = useHistory()
+  return (
+    <div className="movie-container">
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          height="140"
+          image={movie.poster}
+          alt={movie.moviename}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+          <div className='header'>
+          <div> {movie.moviename}
+          <IconButton
+            color="primary"
+            aria-label="movie-info"
+            onClick={toggle}
+          >
+            {!show ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
+          </IconButton></div>
+         
+            🌠{movie.rating}
+          </div>
+            
+          </Typography>
+          <div className="icon-group">
+            <IconButton color="primary" aria-label="movie-info">
+              <InfoIcon
+                color="primary"
+                onClick={() => history.push(`/movie-info/${index}`)}
+              />
+            </IconButton>
+            {editButton}
+            {deleteButton}
+          </div>
+          <Typography variant="body2" color="text.secondary">
+            {show ? <p>{movie.summary}</p> : ''}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <LikeDislike />
+        </CardActions>
+      </Card>
+    </div>
+  )
 }

@@ -1,0 +1,13 @@
+.router-links {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  display: inline;
+  margin: auto 15px;
+}

@@ -2,38 +2,52 @@ import React from 'react'
 import './movie-list.css'
 
 import { MovieContainer } from '../movie-container/movie-container'
+import { useHistory } from 'react-router'
 
-import {useHistory} from 'react-router-dom'
 
-export const MovieList=({moviesList,setMovies})=> {
+import IconButton from '@mui/material/IconButton';
 
-    const history=useHistory()
+import DeleteIcon from '@mui/icons-material/Delete';
 
-    const deleteMovie=(index)=>
-    {
-        const deleteIndex=index
-        const updatedMoviesList=moviesList.filter((movie,index)=>index!==deleteIndex)
-
-        // setMovies([...updatedMoviesList])
-
-        history.push('/movies')
-         
-    }
-
-    return(
-<div className='movie-list'>
+import EditIcon from '@mui/icons-material/Edit';
 
 
 
-{moviesList.map((movie,index)=> <MovieContainer index={index} movie={movie} 
+export const MovieList = ({movies,setMovies }) => {
+    
+const history=useHistory()
+
+  const deleteMovie=(index)=>{
+
+    const delindex=index
+
+    const remMovies=movies.filter((movie,index)=>delindex!==index)
+     setMovies([...remMovies])
+
+     history.push('/')
+  }
+  return (
+    <div className="movie-list">
+      {movies.map((movie, index) => (
+        <MovieContainer index={index} movie={movie}
+        
+        deleteButton={
+          <IconButton aria-label="delete" color="error"  size="large" >
+          <DeleteIcon color='error' onClick={()=>deleteMovie(index)}/>
+        </IconButton>
+        }
+       
+        editButton={
+          <IconButton aria-label="edit" color="secondary"  size="large" >
+          <EditIcon  color='secondary' onClick={()=>history.push(`/movie-edit/${index}`)} />
+          </IconButton>
+          
+          }
+        
 
 
-deleteButton={<button onClick={()=> deleteMovie(index)}>Delete</button>}
-
-
-
-/>)}
-</div>
-
-    )
+        />
+      ))}
+    </div>
+  )
 }

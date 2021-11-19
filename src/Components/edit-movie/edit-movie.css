@@ -1,0 +1,14 @@
+.edit-movie {
+  margin: 20px;
+  padding: 20px;
+  border: solid 2px grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#filled-basic {
+  width: 50%;
+}

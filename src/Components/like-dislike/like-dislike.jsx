@@ -1,4 +1,9 @@
 import React,{useState} from 'react'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import Badge from '@mui/material/Badge';
+
+import './like-dislike.css'
 
 export const LikeDislike=()=>
 {
@@ -20,9 +25,17 @@ setLike(like+1)
 
     return(
 
-        <div>
-        <button onClick={liked}>{like}</button>
-        <button onClick={disliked}>{dislike}</button>
+        <div className='like-dislike'>
+
+        <Badge badgeContent={like} color="success">
+      <ThumbUpIcon color="success" onClick={liked} />
+    </Badge>
+
+    <Badge badgeContent={dislike} color="error">
+      <ThumbDownAltIcon color="error" onClick={disliked} />
+    </Badge>
+
+        
         </div>
     )
 
