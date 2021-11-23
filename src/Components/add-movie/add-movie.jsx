@@ -77,7 +77,7 @@ export const AddMovie = () => {
           <TextField
             error
             id="outlined-error-helper"
-            label="Movie Name"
+            label="Movie"
            
             helperText={errors.moviename}
             onChange={handleChange}
