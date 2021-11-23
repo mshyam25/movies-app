@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 
 
-export const MovieInfo=({movies})=>
+export const MovieInfo=()=>
 {
 
-    const {movieid}=useParams()
+    const {id}=useParams()
 
-    const movie=movies[movieid]
+    const [movie,setMovie]=useState({})
+
+    useEffect(()=>{
+
+      fetch(`https://61988da3164fa60017c230e3.mockapi.io/movies/${id}`,{method:'Get'})
+      .then(response=>response.json())
+      .then(data=>setMovie(data))
+
+    },[])
 
     return(
 

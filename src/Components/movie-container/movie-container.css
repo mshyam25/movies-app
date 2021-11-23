@@ -4,6 +4,8 @@
 
   cursor: pointer;
   width: 350px;
+
+  height: min-content;
 }
 
 img {

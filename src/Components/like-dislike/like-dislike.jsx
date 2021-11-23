@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import Badge from '@mui/material/Badge';
@@ -21,6 +21,11 @@ setLike(like+1)
     {
         setDislike(dislike+1)
     }
+
+    useEffect(()=>{
+
+        console.log('Update',like)
+    },[like])
 
 
     return(

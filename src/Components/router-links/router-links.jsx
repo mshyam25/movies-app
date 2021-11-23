@@ -12,7 +12,13 @@ import PaletteIcon from '@mui/icons-material/Palette';
 
 import IconButton from '@mui/material/IconButton';
 
-export const RouterLinks=()=>
+
+
+import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
+
+import Brightness5Icon from '@mui/icons-material/Brightness5';
+
+export const RouterLinks=({theme,setTheme})=>
 {
 
     return(
@@ -37,7 +43,13 @@ export const RouterLinks=()=>
         <PaletteIcon  color='primary' size='large's/>
         </IconButton></Link></li> 
 
-    
+        <li> 
+        <IconButton aria-label="Theme" onClick={()=>setTheme(theme==='dark' ? 'light' : 'dark')} style={{marginLeft:'auto'}}>
+        
+         {theme==='dark' ? <Brightness5Icon color='primary'/> : <BrightnessHighIcon/>}
+        </IconButton>
+        </li>
+    <Link to='/basic-form'>Basic Form</Link>
         </ul>
         
         </div>
