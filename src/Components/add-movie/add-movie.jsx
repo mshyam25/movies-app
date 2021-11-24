@@ -40,7 +40,7 @@ export const AddMovie = () => {
   const formValidate = yup.object({
     moviename: yup
       .string()
-      .min(2, 'Minimum 2 characters')
+      .min(4, 'Minimum 4 characters')
       .max(14)
       .required('Required'),
 
@@ -75,14 +75,21 @@ export const AddMovie = () => {
 
         {errors.moviename && touched.moviename ? (
           <TextField
-            error
-            id="outlined-error-helper"
-            label="Movie"
-           
-            helperText={errors.moviename}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
+          error
+          id="outlined-error-helper-text"
+          label="Error"
+          defaultValue="Hello World"
+          helperText="Incorrect entry."
+        />
+          // <TextField
+          //   error
+          //   id="outlined-error-helper"
+          //   label='Movie'
+          //   defaultValue='Movie'
+          //   helperText={errors.moviename}
+          //   onChange={handleChange}
+          //   onBlur={handleBlur}
+          // />
         ) : (
           <TextField
             name="moviename"
