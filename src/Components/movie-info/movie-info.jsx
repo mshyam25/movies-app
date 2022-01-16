@@ -11,7 +11,7 @@ export const MovieInfo=()=>
 
     useEffect(()=>{
 
-      fetch(`https://61988da3164fa60017c230e3.mockapi.io/movies/${id}`,{method:'Get'})
+      fetch(`https://61a8d5f233e9df0017ea3b8e.mockapi.io/movies/${id}`,{method:'Get'})
       .then(response=>response.json())
       .then(data=>setMovie(data))
 

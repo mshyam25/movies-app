@@ -15,7 +15,7 @@ export const MovieList = () => {
   const [movies, setMovies] = useState([])
 
   const getMovies=() => {
-    fetch('https://61988da3164fa60017c230e3.mockapi.io/movies', {
+    fetch('https://61a8d5f233e9df0017ea3b8e.mockapi.io/movies', {
       method: 'GET'
     })
       .then((response) => response.json())
@@ -27,19 +27,9 @@ export const MovieList = () => {
 
   const deleteMovie = (id) => {
 
-    fetch(`https://61988da3164fa60017c230e3.mockapi.io/movies/${id}`,{method:'Delete'})
+    fetch(`https://61a8d5f233e9df0017ea3b8e.mockapi.io/movies/${id}`,{method:'Delete'})
     .then(()=>getMovies())
-    // fetch(`https://61988da3164fa60017c230e3.mockapi.io/movies/${id}`, {
-    //   method: 'Delete',
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => setMovies(data))
-    // const delindex=index
-
-    // const remMovies=movies.fi{lter((movie,index)=>delindex!==index)
-    //  setMovies([...remMovies])
-
-    //  history.push('/')
+    
   }
   return (
     <div className="movie-list">
