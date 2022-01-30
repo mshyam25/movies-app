@@ -5,6 +5,7 @@ import Button from '@mui/material/Button'
 import './edit-movie.css'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import {API} from '../../global.js'
 
 export const EditMovie = () => {
   const { id } = useParams()
@@ -15,7 +16,7 @@ export const EditMovie = () => {
 
   useEffect(()=>{
 
-    fetch(`https://61a8d5f233e9df0017ea3b8e.mockapi.io/movies/${id}`,{method:'Get'})
+    fetch(`${API}/movies/${id}`,{method:'Get'})
     .then(response=>response.json())
     .then(data=>setMovie(data))
 
@@ -48,7 +49,7 @@ function UpdateMovie({movie})
 
   const editMovie = () => {
 
-    fetch(`https://61a8d5f233e9df0017ea3b8e.mockapi.io/movies/${id}`,
+    fetch(`${API}/movies/${id}`,
     {method:'PUT',
 body:JSON.stringify(values),
 headers:{'Content-type':'application/json'}})

@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-
+import {API} from '../../global.js'
 export const AddMovie = () => {
  
 
@@ -34,7 +34,7 @@ export const AddMovie = () => {
       initialValues: { moviename: '', poster: '', summary: '', rating: '',trailer:'' },
       validationSchema: formValidate,
       onSubmit: () => {
-        fetch('https://61a8d5f233e9df0017ea3b8e.mockapi.io/movies', {
+        fetch(`${API}`, {
           method: 'POST',
           body: JSON.stringify(values),
           headers: { 'Content-type': 'application/json' },

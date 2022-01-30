@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-
+import {API} from '../../global.js'
 
 export const MovieInfo=()=>
 {
@@ -11,7 +11,7 @@ export const MovieInfo=()=>
 
     useEffect(()=>{
 
-      fetch(`https://61a8d5f233e9df0017ea3b8e.mockapi.io/movies/${id}`,{method:'Get'})
+      fetch(`${API}/movies/${id}`,{method:'Get'})
       .then(response=>response.json())
       .then(data=>setMovie(data))
 
