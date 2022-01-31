@@ -26,31 +26,31 @@ export const MovieList = () => {
 
   const history = useHistory()
 
-  const deleteMovie = (id) => {
+  const deleteMovie = (_id) => {
 
-    fetch(`${API}/movies/${id}`,{method:'Delete'})
+    fetch(`${API}/movies/${_id}`,{method:'Delete'})
     .then(()=>getMovies())
     
   }
   return (
     <div className="movie-list">
-      {movies.map(({ id, moviename, poster, summary, rating }, index) => (
+      {movies.map(({ _id, name, poster, summary, rating }, index) => (
         <MovieContainer
-          id={id}
-          moviename={moviename}
+          _id={_id}
+          name={name}
           poster={poster}
           summary={summary}
           rating={rating}
           deleteButton={
             <IconButton aria-label="delete" color="error" size="large">
-              <DeleteIcon color="error" onClick={() => deleteMovie(id)} />
+              <DeleteIcon color="error" onClick={() => deleteMovie(_id)} />
             </IconButton>
           }
           editButton={
             <IconButton aria-label="edit" color="secondary" size="large">
               <EditIcon
                 color="secondary"
-                onClick={() => history.push(`/movie-edit/${id}`)}
+                onClick={() => history.push(`/movie-edit/${_id}`)}
               />
             </IconButton>
           }

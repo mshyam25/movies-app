@@ -36,7 +36,7 @@ function UpdateMovie({movie})
   const history=useHistory()
   const validate=yup.object({
 
-    moviename: yup.string().required('cannot be empty')
+    name: yup.string().required('cannot be empty')
     .min(4)
     .max(10),
     poster:yup.string().required().min(4),
@@ -60,7 +60,7 @@ headers:{'Content-type':'application/json'}})
   const { values, errors, handleChange, handleBlur, handleSubmit, touched } =
     useFormik({
       initialValues: {
-        moviename: movie.moviename,
+        name: movie.name,
         poster: movie.poster,
         summary: movie.summary,
         rating: movie.rating,
@@ -75,14 +75,14 @@ headers:{'Content-type':'application/json'}})
     <div className="edit-movie">
       <TextField
         id="filled-basic"
-        name="moviename"
+        name="name"
         label="Movie Name"  
         onBlur={handleBlur}
-        value={values.moviename}
+        value={values.name}
         variant="filled"
         onChange={handleChange}
-        error={errors.moviename && touched.moviename}
-            helperText={errors.moviename && touched.moviename ? errors.moviename : ''}
+        error={errors.name && touched.name}
+            helperText={errors.name && touched.name ? errors.name : ''}
       />
       <TextField
         id="filled-basic"

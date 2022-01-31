@@ -15,7 +15,7 @@ export const AddMovie = () => {
 
 
   const formValidate = yup.object({
-    moviename: yup
+    name: yup
       .string()
       .min(4, 'Minimum 4 characters')
       .max(14)
@@ -31,12 +31,12 @@ export const AddMovie = () => {
 
   const { values, errors, handleBlur, handleChange, handleSubmit, touched } =
     useFormik({
-      initialValues: { moviename: '', poster: '', summary: '', rating: '',trailer:'' },
+      initialValues: { name: '', poster: '', summary: '', rating: '',trailer:'' },
       validationSchema: formValidate,
       onSubmit: () => {
-        fetch(`${API}`, {
+        fetch(`${API}/movies`, {
           method: 'POST',
-          body: JSON.stringify(values),
+          body: JSON.stringify([values]),
           headers: { 'Content-type': 'application/json' },
         }).then(() => history.push('/movies'))
       },
@@ -47,15 +47,15 @@ export const AddMovie = () => {
       <div className="add-movie">
     
           <TextField
-            name="moviename"
-            value={values.moviename}
-            id="moviename"
+            name="name"
+            value={values.name}
+            id="name"
             label="Movie Name"
             variant="outlined"
             onChange={handleChange}
             onBlur={handleBlur}
-            error={errors.moviename && touched.moviename}
-            helperText={errors.moviename && touched.moviename ? errors.moviename : ''}
+            error={errors.name && touched.name}
+            helperText={errors.name && touched.name ? errors.name : ''}
           />
       
           <TextField
@@ -99,7 +99,7 @@ export const AddMovie = () => {
           name="trailer"
           value={values.trailer}
           id="outlined-basic"
-          label="Rating"
+          label="Trailer"
           variant="outlined"
           onChange={handleChange}
           onBlur={handleBlur}

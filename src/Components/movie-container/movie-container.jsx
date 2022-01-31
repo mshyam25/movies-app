@@ -15,7 +15,7 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 
-export const MovieContainer = ({ id,moviename,poster,summary,rating, deleteButton, editButton }) => {
+export const MovieContainer = ({ _id,name,poster,summary,rating, deleteButton, editButton }) => {
   const [show, setShow] = useState(true)
 
   const toggle = () => {
@@ -30,12 +30,12 @@ export const MovieContainer = ({ id,moviename,poster,summary,rating, deleteButto
           component="img"
           height="140"
           image={poster}
-          alt={moviename}
+          alt={name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
           <div className='header'>
-          <div> {moviename}
+          <div> {name}
           <IconButton
             color="primary"
             aria-label="movie-info"
@@ -52,7 +52,7 @@ export const MovieContainer = ({ id,moviename,poster,summary,rating, deleteButto
             <IconButton color="primary" aria-label="movie-info">
               <InfoIcon
                 color="primary"
-                onClick={() => history.push(`/movie-info/${id}`)}
+                onClick={() => history.push(`/movie-info/${_id}`)}
               />
             </IconButton>
             {editButton}

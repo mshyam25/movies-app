@@ -21,7 +21,7 @@ export const MovieInfo=()=>
 
   
         <div className='movie-container'>
-        <h3>{movie.moviename} </h3>
+        <h3>{movie.name} </h3>
           <h5> 🌟{movie.rating}</h5>
           <p>{movie.summary}</p>
 
